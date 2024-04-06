@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QUIZ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>QUIZ</h1>
+  <form id="quizForm" action="/api/submit" method="POST">
+    <div id="quizQuestions"></div>
+    <button type="submit" id="submitBtn" style="display: none;">Submit Answers</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    fetch('/api/questions')
+      .then(response => response.json())
+      .then(data => {
+        const form = document.getElementById('quizForm');
+        const quizQuestions = document.getElementById('quizQuestions');
+        const resultsDiv = document.getElementById('results');
+
+        data.forEach((question, index) => {
+          const questionDiv = document.createElement('div');
+          questionDiv.innerHTML = `<strong>${index + 1}. ${question.question}</strong><br>`;
+
+          question.options.forEach(option => {
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = `answer${index}`;
+            radio.value = option;
+            label.appendChild(radio);
+            label.appendChild(document.createTextNode(option));
+            questionDiv.appendChild(label);
+            questionDiv.appendChild(document.createElement('br'));
+          });
+
+          quizQuestions.appendChild(questionDiv);
+        });
+
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(form);
+          const answers = Array.from(formData.values());
+
+          fetch('/api/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ answers })
+          })
+            .then(response => response.json())
+            .then(result => {
+              resultsDiv.innerHTML = `<h2>Results</h2>`;
+              result.results.forEach((item, index) => {
+                const resultMsg = item.correct
+                  ? `Question ${index + 1}: Correct!`
+                  : `Question ${index + 1}: Incorrect. Correct answer: ${item.correctAnswer}`;
+                resultsDiv.innerHTML += `<p>${resultMsg}</p>`;
+              });
+
+              resultsDiv.innerHTML += `<h3>Total Score: ${result.score} out of ${data.length}</h3>`;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Show submit button after questions are loaded
+        document.getElementById('submitBtn').style.display = 'block';
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>

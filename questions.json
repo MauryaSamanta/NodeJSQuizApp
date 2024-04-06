@@ -1,0 +1,53 @@
+[
+    {
+      "question": "In which year did World War I begin?",
+      "options": ["1914", "1917", "1918", "1920"],
+      "answer": "1914"
+    },
+    {
+      "question": "Who was the first President of the United States?",
+      "options": ["George Washington", "Thomas Jefferson", "John Adams", "James Madison"],
+      "answer": "George Washington"
+    },
+    {
+      "question": "Which ancient civilization built the famous city of Machu Picchu?",
+      "options": ["Maya", "Inca", "Aztec", "Egyptian"],
+      "answer": "Inca"
+    },
+    {
+      "question": "The 'Great Fire of London' occurred in which year?",
+      "options": ["1600", "1666", "1750", "1801"],
+      "answer": "1666"
+    },
+    {
+      "question": "Who wrote the famous play 'Romeo and Juliet'?",
+      "options": ["William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain"],
+      "answer": "William Shakespeare"
+    },
+    {
+      "question": "Which English king was executed in 1649 during the English Civil War?",
+      "options": ["Henry VIII", "Charles I", "Richard III", "James II"],
+      "answer": "Charles I"
+    },
+    {
+      "question": "The 'Boston Tea Party' took place in which year?",
+      "options": ["1750", "1773", "1801", "1812"],
+      "answer": "1773"
+    },
+    {
+      "question": "Who was the first female Prime Minister of the United Kingdom?",
+      "options": ["Margaret Thatcher", "Theresa May", "Angela Merkel", "Indira Gandhi"],
+      "answer": "Margaret Thatcher"
+    },
+    {
+      "question": "What year did the Berlin Wall fall, marking the end of the Cold War?",
+      "options": ["1985", "1989", "1991", "1993"],
+      "answer": "1989"
+    },
+    {
+      "question": "Which country was ruled by the famous leader Napoleon Bonaparte?",
+      "options": ["Italy", "Spain", "Germany", "France"],
+      "answer": "France"
+    }
+  ]
+  
